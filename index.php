@@ -11,8 +11,28 @@
         h1 {
             color: #4bffc0;
         }
-        div{
-            background: #a623f1;
+        .op1{
+            background: #27ec52;
+             padding-top: 20px;
+            padding-right: 20px; 
+            padding-bottom: 20px; 
+            padding-left:20px; 
+            margin: 20px;
+            margin-left: 50px;
+            margin-bottom: 40px;
+            margin-right:50px;
+            border: 20px hidden black;
+        }
+        .seccion{
+             background: #545e56;
+             padding-top: 20px;
+            padding-right: 20px; 
+            padding-bottom: 20px; 
+            padding-left:20px;
+            margin: 20px;
+            margin-left: 50px;
+            margin-bottom: 40px;
+            margin-right:50px;
         }
     </style>
  </head>
@@ -23,7 +43,17 @@
     <h4>hola crayola</h4>
     <h5>hola crayola</h5>
     <h6>hola crayola</h6>
-    <div><h2>titulo del parrafo</h2></div>
-    <div>Este es un parrafo</div>
+    <div class="Seccion">
+        <h2>Titulo del parrafo</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius voluptas est, quaerat
+         voluptatibus ex expedita labore necessitatibus eos illo nobis possimus natus aliquam debitis adipisci libero harum dolore soluta
+          id!</p>
+    </div>
+    <div class="op1">
+        <h2>Titulo del parrafo</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius voluptas est, quaerat
+         voluptatibus ex expedita labore necessitatibus eos illo nobis possimus natus aliquam debitis adipisci libero harum dolore soluta
+          id!</p>
+    </div>
  </body>
  </html>
