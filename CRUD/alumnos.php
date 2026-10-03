@@ -15,20 +15,46 @@ $query=mysqli_query($con,$sql);
     <title>alumnos</title>
 </head>
 <body>
-    <form action="guardar.php" >
-        <input type="int" name="Matricula" placeholder="Matricula">
-        <input type="text" name="Nombre" placeholder="Nombretext">
-        <input type="text" name="Apellido paterno" placeholder="Apellido paterno">
-        <input type="text" name="Apellido materno" placeholder="Apellido materno">
-        <button>guardar</button>
+    <h1>Formulario</h1>
+    <form action="insertar.php" method="POST">
+        <div style="display: flex; gap: 10px;">
+            <input type="int" class="form-control" name="matricula" placeholder="Matricula">
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+            <input type="text" class="form-control" name="apellido_p" placeholder="Apellido paterno">
+            <input type="text" class="form-control" name="apellido_m" placeholder="Apellido materno">
+            <input type="text" class="form-control" name="edad" placeholder="edad">
+            <button type="submit">guardar</button>
+        </div>
     </form>
-    <table border="1">
-        <tr>
-            <th>matricula</th>
-            <th>nombre</th>
-            <th>apellido Paterno</th>
-            <th>apellido Materno</th>
-        </tr>
-    </table>
+    <br>
+    <div class="tabla" >
+        <thead>
+            <table border="2">
+                <tr>
+                    <th>matricula</th>
+                    <th>nombre</th>
+                    <th>apellido Paterno</th>
+                    <th>apellido Materno</th>
+                    <th>Edad</th>
+                    <th>Acciones</th>
+                </tr>
+        </thead>
+        <tbody>
+            <?php
+            while ($row=mysqli_fetch_array($query)){
+            ?>
+            <tr>
+                <td><?php echo $row['matricula']?></td>
+                <td><?php echo $row['nombre']?></td>
+                <td><?php echo $row['apellido_p']?></td>
+                <td><?php echo $row['apellido_m']?></td>
+                <td><?php echo $row['edad']?></td>
+            </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+            </table>
+    </div>
 </body>
 </html>
