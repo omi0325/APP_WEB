@@ -29,7 +29,7 @@ $query=mysqli_query($con,$sql);
     <br>
     <div class="tabla" >
         <thead>
-            <table border="2">
+            <table border="1">
                 <tr>
                     <th>matricula</th>
                     <th>nombre</th>
