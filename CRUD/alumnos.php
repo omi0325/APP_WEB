@@ -49,6 +49,10 @@ $query=mysqli_query($con,$sql);
                 <td><?php echo $row['apellido_p']?></td>
                 <td><?php echo $row['apellido_m']?></td>
                 <td><?php echo $row['edad']?></td>
+                <td>
+                    <br>
+                    <a href="eliminar.php?matricula=<?php echo $row['matricula'];?>">Eliminar</a>
+                </td>
             </tr>
             <?php
             }
