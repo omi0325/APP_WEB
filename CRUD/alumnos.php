@@ -50,6 +50,7 @@ $query=mysqli_query($con,$sql);
                 <td><?php echo $row['apellido_m']?></td>
                 <td><?php echo $row['edad']?></td>
                 <td>
+                    <a href="update.php?matricula=<?php echo $row['matricula']; ?>">Editar</a>
                     <br>
                     <a href="eliminar.php?matricula=<?php echo $row['matricula'];?>">Eliminar</a>
                 </td>
