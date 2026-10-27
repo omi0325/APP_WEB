@@ -1,6 +1,6 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request, url_for
 from flask_mysqldb import MySQL
-from weakref.security import generate_password_hash, check_password_hash, request
+from werkzeug.security import generate_password_hash, check_password_hash
 app=Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 app.config['MYSQL_HOST']='localhost'
@@ -14,7 +14,7 @@ mysql=MySQL(app)
 def home():
     #retornar un mensaje
     return render_template("login.html")
-@app.route("/registro",method=["GET","POST"])
+@app.route("/registro",methods=["GET","POST"])
 def registro():
     if request.method=="POST":
         nombre=request.form["nombre"]
@@ -22,10 +22,35 @@ def registro():
         appellido_m=request.form["apellido_m"]
         correo=request.form["correo"]
         password_hash=request.form["password_hash"]
-        id_rol=request.form["id_rol"]
+        id_rol=request.form["id_rol"] 
         #generamos un hash a partir de la contraseña
         password=generate_password_hash(password_hash)
-        
+        cursor=mysql.connection.cursor()
+        cursor.execute(
+            "SELECT id FROM usuarios WHERE correo=%s",
+            (correo,)
+        )
+        if cursor.fetchone():
+            cursor.close()
+            return render_template("registro.html")
+        cursor.execute(
+            """INSERT INTO usuarios
+            (nombre,apellido_p,apellido_m,correo,password_hash,id_rol)
+            VALUES (%s,%s,%s,%s,%s,%s)
+            """,(
+                nombre,
+                apellido_p,
+                appellido_m,
+                correo,
+                password,
+                id_rol
+            )
+        )
+        mysql.connection.commit()
+        cursor.close()
+        return redirect(url_for("home"))
+    return render_template("registro.html")
+
 #ejecuta el proyecto en el puerto 5000
 if __name__=="__main__":
     app.run(port=5000)
