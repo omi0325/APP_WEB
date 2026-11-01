@@ -1,23 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Iniciar sesión</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5"
+          rel="stylesheet" type="text/css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-    <div>
-        <h1>INICIAR SESION</h1>
-        <form action="/login" method="POST">
-            <label for="">Correo</label>
-                <input type="email" name="correo" required>
-            <label for="">Contraseña</label>
-                <input type="password" name="password_hash" required>
-                <br><br>
-                <button type="submit">Entrar</button>
-        </form>
-        <p>¿No tienes cuenta?</p>
-        <a href="{{url_for('registro')}}">Registrate</a>
+
+<body class="min-h-screen flex justify-center items-center bg-blue-100">
+
+    <div class="card bg-base-100 w-96 shadow-2xl">
+        <div class="card-body">
+
+            <h1 class="text-3xl font-bold text-center text-blue-700">
+                Iniciar sesión
+            </h1>
+
+            <p class="text-center text-gray-500 mb-4">
+                Ingresa tus datos para continuar
+            </p>
+
+            <form action="/login" method="POST">
+
+                <label class="label">
+                    <span class="label-text font-semibold">Correo electrónico</span>
+                </label>
+
+                <input type="email" name="correo"
+                       class="input input-bordered w-full"
+                       placeholder="ejemplo@correo.com" required>
+
+                <label class="label mt-3">
+                    <span class="label-text font-semibold">Contraseña</span>
+                </label>
+
+                <input type="password" name="password_hash"
+                       class="input input-bordered w-full"
+                       placeholder="Ingresa tu contraseña" required>
+
+                <button type="submit"
+                        class="btn btn-primary w-full mt-6">
+                    Entrar
+                </button>
+
+            </form>
+
+            <div class="divider">O</div>
+
+            <p class="text-center text-sm">
+                ¿No tienes cuenta?
+                <a href="{{ url_for('registro') }}"
+                   class="link link-primary font-bold">
+                    Regístrate
+                </a>
+            </p>
+
+        </div>
     </div>
 </body>
 </html>

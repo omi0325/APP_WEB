@@ -84,6 +84,9 @@ def login():
             session["id_usuario"]=usuario[0]
             session["nombre"]=usuario[1]
             session["rol"]=usuario[6]
+            print("USUARIO ENCONTRADO:", usuario)
+            print("ROL:", session["rol"])
+            print("SESION:", session)
             #si el rol es administrador lo manda a la ruta administrador sino a la de usuario
             if session["rol"]=="Administrador":
                 return  redirect(url_for("admin"))
@@ -95,14 +98,14 @@ def login():
 def admin():
     if "id_usuario"not in session:
         return redirect (url_for("login"))
-    if session.get("rol")!="administrador":
+    if session.get("rol")!="Administrador":
         return "Acceso denegado"
     return render_template("administrador.html",nombre=session["nombre"])
 @app.route("/usuario")
 def usuario():
     if "id_usuario" not in session:
         return redirect(url_for("login"))
-    if session.get("rol")!="usuarios":
+    if session.get("rol")!="Usuario":
         return "Acceso denegado"
     return render_template("usuarios.html",nombre=session["nombre"])
 @app.route("/logout")
